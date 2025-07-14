@@ -134,80 +134,107 @@ namespace d3d_vtable {
 		cheatManager.database->load();
 		cheatManager.logger->addLog("All skins loaded from memory!\n");
 		ImGui::CreateContext();
+
+		// 获取 ImGui 样式对象
 		auto& style{ ImGui::GetStyle() };
-
-		style.WindowPadding = ImVec2(6.0f, 6.0f);
-		style.FramePadding = ImVec2(6.0f, 4.0f);
-		style.ItemSpacing = ImVec2(6.0f, 4.0f);
-		style.WindowTitleAlign = ImVec2(0.5f, 0.5f);
-
-		style.ScrollbarSize = 12.0f;
-
-		style.WindowBorderSize = 0.5f;
-		style.ChildBorderSize = 0.5f;
-		style.PopupBorderSize = 0.5f;
-		style.FrameBorderSize = 0;
-
-		style.WindowRounding = 0.0f;
-		style.ChildRounding = 0.0f;
-		style.FrameRounding = 0.0f;
-		style.ScrollbarRounding = 0.0f;
-		style.GrabRounding = 0.0f;
-		style.TabRounding = 0.0f;
-		style.PopupRounding = 0.0f;
-
-		style.AntiAliasedFill = true;
-		style.AntiAliasedLines = true;
-
+		// 获取样式的颜色数组
 		const auto colors{ style.Colors };
 
+		// 文本颜色
 		colors[ImGuiCol_Text] = ImVec4(1.00f, 1.00f, 1.00f, 1.00f);
+		// 禁用文本颜色
 		colors[ImGuiCol_TextDisabled] = ImVec4(0.44f, 0.44f, 0.44f, 1.00f);
-		colors[ImGuiCol_WindowBg] = ImVec4(0.06f, 0.06f, 0.06f, 1.00f);
-		colors[ImGuiCol_ChildBg] = ImVec4(0.00f, 0.00f, 0.00f, 0.00f);
+		// 窗口背景颜色
+		colors[ImGuiCol_WindowBg] = ImVec4(0.14f, 0.28f, 0.48f, 1.00f);
+		// 子窗口背景颜色
+		colors[ImGuiCol_ChildBg] = ImVec4(0.14f, 0.28f, 0.48f, 0.50f);
+		// 弹出窗口背景颜色
 		colors[ImGuiCol_PopupBg] = ImVec4(0.08f, 0.08f, 0.08f, 0.94f);
+		// 边框颜色
 		colors[ImGuiCol_Border] = ImVec4(0.51f, 0.36f, 0.15f, 1.00f);
+		// 边框阴影颜色
 		colors[ImGuiCol_BorderShadow] = ImVec4(0.00f, 0.00f, 0.00f, 0.00f);
+		// 框架背景颜色（如输入框、按钮等）
 		colors[ImGuiCol_FrameBg] = ImVec4(0.11f, 0.11f, 0.11f, 1.00f);
+		// 框架悬停时的背景颜色
 		colors[ImGuiCol_FrameBgHovered] = ImVec4(0.51f, 0.36f, 0.15f, 1.00f);
+		// 框架激活时的背景颜色
 		colors[ImGuiCol_FrameBgActive] = ImVec4(0.78f, 0.55f, 0.21f, 1.00f);
-		colors[ImGuiCol_TitleBg] = ImVec4(0.51f, 0.36f, 0.15f, 1.00f);
+		// 标题栏背景颜色
+		colors[ImGuiCol_TitleBg] = ImVec4(1.00f, 1.00f, 1.00f, 1.00f);
+		// 激活状态下标题栏的背景颜色
 		colors[ImGuiCol_TitleBgActive] = ImVec4(0.91f, 0.64f, 0.13f, 1.00f);
+		// 折叠状态下标题栏的背景颜色
 		colors[ImGuiCol_TitleBgCollapsed] = ImVec4(0.00f, 0.00f, 0.00f, 0.51f);
+		// 菜单栏背景颜色
 		colors[ImGuiCol_MenuBarBg] = ImVec4(0.11f, 0.11f, 0.11f, 1.00f);
+		// 滚动条背景颜色
 		colors[ImGuiCol_ScrollbarBg] = ImVec4(0.06f, 0.06f, 0.06f, 0.53f);
+		// 滚动条滑块颜色
 		colors[ImGuiCol_ScrollbarGrab] = ImVec4(0.21f, 0.21f, 0.21f, 1.00f);
+		// 滚动条滑块悬停时的颜色
 		colors[ImGuiCol_ScrollbarGrabHovered] = ImVec4(0.47f, 0.47f, 0.47f, 1.00f);
+		// 滚动条滑块激活时的颜色
 		colors[ImGuiCol_ScrollbarGrabActive] = ImVec4(0.81f, 0.83f, 0.81f, 1.00f);
+		// 复选框选中标记颜色
 		colors[ImGuiCol_CheckMark] = ImVec4(0.78f, 0.55f, 0.21f, 1.00f);
+		// 滑块手柄颜色
 		colors[ImGuiCol_SliderGrab] = ImVec4(0.91f, 0.64f, 0.13f, 1.00f);
+		// 滑块手柄激活时的颜色
 		colors[ImGuiCol_SliderGrabActive] = ImVec4(0.91f, 0.64f, 0.13f, 1.00f);
+		// 按钮正常状态颜色
 		colors[ImGuiCol_Button] = ImVec4(0.51f, 0.36f, 0.15f, 1.00f);
+		// 按钮悬停时的颜色
 		colors[ImGuiCol_ButtonHovered] = ImVec4(0.91f, 0.64f, 0.13f, 1.00f);
+		// 按钮激活时的颜色
 		colors[ImGuiCol_ButtonActive] = ImVec4(0.78f, 0.55f, 0.21f, 1.00f);
+		// 标题头正常状态颜色（如树形结构、列表等标题头）
 		colors[ImGuiCol_Header] = ImVec4(0.51f, 0.36f, 0.15f, 1.00f);
+		// 标题头悬停时的颜色
 		colors[ImGuiCol_HeaderHovered] = ImVec4(0.91f, 0.64f, 0.13f, 1.00f);
+		// 标题头激活时的颜色
 		colors[ImGuiCol_HeaderActive] = ImVec4(0.93f, 0.65f, 0.14f, 1.00f);
+		// 分隔线颜色
 		colors[ImGuiCol_Separator] = ImVec4(0.21f, 0.21f, 0.21f, 1.00f);
+		// 分隔线悬停时的颜色
 		colors[ImGuiCol_SeparatorHovered] = ImVec4(0.91f, 0.64f, 0.13f, 1.00f);
+		// 分隔线激活时的颜色
 		colors[ImGuiCol_SeparatorActive] = ImVec4(0.78f, 0.55f, 0.21f, 1.00f);
+		// 调整大小手柄颜色
 		colors[ImGuiCol_ResizeGrip] = ImVec4(0.21f, 0.21f, 0.21f, 1.00f);
+		// 调整大小手柄悬停时的颜色
 		colors[ImGuiCol_ResizeGripHovered] = ImVec4(0.91f, 0.64f, 0.13f, 1.00f);
+		// 调整大小手柄激活时的颜色
 		colors[ImGuiCol_ResizeGripActive] = ImVec4(0.78f, 0.55f, 0.21f, 1.00f);
+		// 标签页正常状态颜色
 		colors[ImGuiCol_Tab] = ImVec4(0.51f, 0.36f, 0.15f, 1.00f);
+		// 标签页悬停时的颜色
 		colors[ImGuiCol_TabHovered] = ImVec4(0.91f, 0.64f, 0.13f, 1.00f);
+		// 激活状态下标签页的颜色
 		colors[ImGuiCol_TabActive] = ImVec4(0.78f, 0.55f, 0.21f, 1.00f);
+		// 未聚焦状态下标签页的颜色
 		colors[ImGuiCol_TabUnfocused] = ImVec4(0.07f, 0.10f, 0.15f, 0.97f);
+		// 未聚焦但激活状态下标签页的颜色
 		colors[ImGuiCol_TabUnfocusedActive] = ImVec4(0.14f, 0.26f, 0.42f, 1.00f);
+		// 折线图线条颜色
 		colors[ImGuiCol_PlotLines] = ImVec4(0.61f, 0.61f, 0.61f, 1.00f);
+		// 折线图线条悬停时的颜色
 		colors[ImGuiCol_PlotLinesHovered] = ImVec4(1.00f, 0.43f, 0.35f, 1.00f);
+		// 直方图颜色
 		colors[ImGuiCol_PlotHistogram] = ImVec4(0.90f, 0.70f, 0.00f, 1.00f);
+		// 直方图悬停时的颜色
 		colors[ImGuiCol_PlotHistogramHovered] = ImVec4(1.00f, 0.60f, 0.00f, 1.00f);
+		// 选中文本背景颜色
 		colors[ImGuiCol_TextSelectedBg] = ImVec4(0.26f, 0.59f, 0.98f, 0.35f);
+		// 拖放目标颜色
 		colors[ImGuiCol_DragDropTarget] = ImVec4(1.00f, 1.00f, 0.00f, 0.90f);
+		// 导航高亮颜色
 		colors[ImGuiCol_NavHighlight] = ImVec4(0.26f, 0.59f, 0.98f, 1.00f);
+		// 窗口导航高亮颜色
 		colors[ImGuiCol_NavWindowingHighlight] = ImVec4(1.00f, 1.00f, 1.00f, 0.70f);
+		// 窗口导航背景暗淡颜色
 		colors[ImGuiCol_NavWindowingDimBg] = ImVec4(0.80f, 0.80f, 0.80f, 0.20f);
+		// 模态窗口背景暗淡颜色
 		colors[ImGuiCol_ModalWindowDimBg] = ImVec4(0.80f, 0.80f, 0.80f, 0.35f);
 
 		auto& io{ ImGui::GetIO() }; (void)io;
