@@ -145,13 +145,13 @@ namespace d3d_vtable {
 		// 禁用文本颜色
 		colors[ImGuiCol_TextDisabled] = ImVec4(0.44f, 0.44f, 0.44f, 1.00f);
 		// 窗口背景颜色
-		colors[ImGuiCol_WindowBg] = ImVec4(0.14f, 0.28f, 0.48f, 1.00f);
+		colors[ImGuiCol_WindowBg] = ImVec4(0.18, 0.16, 0.17, 1.00f);
 		// 子窗口背景颜色
-		colors[ImGuiCol_ChildBg] = ImVec4(0.14f, 0.28f, 0.48f, 0.50f);
+		colors[ImGuiCol_ChildBg] = ImVec4(0.18, 0.16, 0.17, 0.60f);
 		// 弹出窗口背景颜色
 		colors[ImGuiCol_PopupBg] = ImVec4(0.08f, 0.08f, 0.08f, 0.94f);
 		// 边框颜色
-		colors[ImGuiCol_Border] = ImVec4(0.51f, 0.36f, 0.15f, 1.00f);
+		colors[ImGuiCol_Border] = ImVec4(0.18, 0.16, 0.17, 1.00f);
 		// 边框阴影颜色
 		colors[ImGuiCol_BorderShadow] = ImVec4(0.00f, 0.00f, 0.00f, 0.00f);
 		// 框架背景颜色（如输入框、按钮等）
