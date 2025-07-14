@@ -17,10 +17,11 @@
 inline static void footer() noexcept
 {
     using namespace std::string_literals;
-    static const auto buildText{ "最后编译时间："s + __DATE__ + " - " + __TIME__ };
+    static const auto buildText{ "基于Hydy100仓库汉化"s};
+
     ImGui::Separator();
     ImGui::TextUnformatted(buildText.c_str());
-    ImGui::TextUnformatted("版权所有 (C) 2025-2026");
+    ImGui::TextUnformatted("更新QQ群:787470042");
 }
 
 static void changeTurretSkin(const std::int32_t skinId, const std::int32_t team) noexcept
