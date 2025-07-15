@@ -21,7 +21,7 @@ inline static void footer() noexcept
 
     ImGui::Separator();
     ImGui::TextUnformatted(buildText.c_str());
-    ImGui::TextUnformatted("更新QQ群:787470042");
+    ImGui::TextUnformatted("更新QQ群:1038701975");
 }
 
 static void changeTurretSkin(const std::int32_t skinId, const std::int32_t team) noexcept
